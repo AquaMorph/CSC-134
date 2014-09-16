@@ -1,3 +1,5 @@
-.zip
-.docx
-.exe
+*.zip
+*.docx
+*.exe
+*.pdf
+
