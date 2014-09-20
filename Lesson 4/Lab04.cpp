@@ -2,6 +2,8 @@
 #include <string>
 #include <algorithm>
 #include <array>
+
+bool isVowel(char letter);
 using namespace std;
 
 int nDigits (int number)
@@ -50,7 +52,17 @@ bool isPalindrome(string text)
 
 int nVowels(string text)
 {
+	int number = 0;
 	
+	for(int i = 0; i < text.size(); ++i)
+	{
+		if(isVowel(text[i]))
+		{
+			number++;
+		}
+	}
+	
+	return number;
 }
 
 bool isVowel(char letter)
@@ -58,7 +70,7 @@ bool isVowel(char letter)
 	char vowels[10]={'a', 'A', 'e', 'E', 'I', 'i', 'o', 'O', 'u', 'U'};
 	bool answer = false;
 	
-	for (int i = 0;i<9;i++)
+	for (int i = 0;i<10;i++)
 	{
 		if(letter==vowels[i])
 		{
@@ -69,9 +81,29 @@ bool isVowel(char letter)
 	return answer;
 }
 
+int searchChar(char letter, string text)
+{
+	int number = 0;
+	
+	for(int i = 0; i < text.size(); ++i)
+	{
+		if(letter==text[i])
+		{
+			number++;
+		}
+	}
+	
+	return number;
+}
+
 int main ()
 {
-  string z;
-  z = isPalindrome ("ran");
-  cout << "The result is " << z;
+	char ch ;
+	string s ; 
+	cout << "Enter string " ; 
+	cin >> s ; 
+	cout << "Enter character to search for "; 
+	cin >> ch ; // 4 sample user input 
+	cout << "there are(is) " << searchChar(ch, s) << " " << ch << " "
+	<< " in " << s;
 }
