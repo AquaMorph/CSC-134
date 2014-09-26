@@ -1,21 +1,19 @@
 ///////////////////////////////////////////////////////////////////////
 //                                                                     
 // Filename: Lab04B.cpp
-// Date: September 25, 2014
+// Date: September 26, 2014
 // Programmer: Christian Colglazier  
 //
 // Description:
-//    A collection of functions. One returns the number of digits in an
-//    int. Another reverses number order. One checks is a word is a 
-//	  palindrome. The forth checks the number of vowels in a string.
-//	  the last checks the number of times a character is used in a
-//	  string.
+//    A collection of functions. One returns the index of a number in an
+//    int. Another checks for repeating digits. Two more find the largest 
+//	  and smallest single digit in an interger. The last one creates an
+//	  average of all individual numbers in an interger.
 //                                                                  
 ///////////////////////////////////////////////////////////////////////
 
 #include <iostream>
 #include <string>
-#include <algorithm>
 #include <array>
 
 using namespace std;
@@ -38,6 +36,7 @@ int nDigits (int number)
 	return length;
 }
 
+//returns number at a chosen index for an interger
 int getIndex(int index, int digits)
 {
 	int numDig =nDigits(digits)-1;
@@ -56,6 +55,7 @@ int getIndex(int index, int digits)
 	}
 }
 
+//checks for repeating numbers
 bool repeatsDigit(int digits)
 {
 	int numDig =nDigits(digits)-1;
@@ -75,6 +75,7 @@ bool repeatsDigit(int digits)
 	return value;
 }
 
+//returns largest single number in an interger
 int largest(int digits)
 {
 	int numDig =nDigits(digits)-1;
@@ -95,6 +96,7 @@ int largest(int digits)
 	return largest;
 }
 
+//returns smallest single number in an interger
 int smallest(int digits)
 {
 	int numDig =nDigits(digits)-1;
@@ -115,6 +117,7 @@ int smallest(int digits)
 	return smallest;
 }
 
+//returns average of individual numbers
 double average(int digits)
 {
 	int numDig =nDigits(digits)-1;
