@@ -1,3 +1,18 @@
+///////////////////////////////////////////////////////////////////////
+//                                                                     
+// Filename: Lab05A.cpp
+// Date: October 3, 2014
+// Programmer: Christian Colglazier  
+//
+// Description:
+//    A collection of functions. One returns the number of digits in an
+//    string. Another reverses number order. One checks is a word is a 
+//	  palindrome. The forth checks the number of vowels in a string.
+//	  the last checks the number of times a character is used in a
+//	  string.
+//                                                                  
+///////////////////////////////////////////////////////////////////////
+
 #include <cstdlib>
 #include <iostream>
 #include <iomanip>
@@ -6,42 +21,102 @@
 using namespace std;
 
 int nChars(string);
-int reverse(string);
+string reverse(string);
 bool isPalidrome(string);
 int nIntegers(string);   
 int searchChar(char,string);
-bool repeatsChar(string);
+string eraseChar(char, string);
+bool isNumber(char);
 
-int nChars(string)
+int nChars(string text)
 {
-	
+	return text.length();
 }
 
-int reverse(string)
+string reverse(string text)
 {
+	string reversed= "";
+	
+	for(int i=0; i<text.length();i++)
+	{
+		reversed = text[i] + reversed;
+	}
+	
+	return reversed;
+}
+
+bool isPalidrome(string text)
+{
+	if (equal(text.begin(), text.begin() + text.size()/2, text.rbegin()))
+	{
+    	return true;
+	}
+	else
+	{
+		return false;
+	}
 	
 }
-bool isPalidrome(string)
+int nIntegers(string text)
 {
+	int number = 0;
 	
-}
-int nIntegers(string)
-{
+	for(int i = 0; i < text.size(); ++i)
+	{
+		if(isNumber(text[i]))
+		{
+			number++;
+		}
+	}
 	
+	return number;
 } 
-int searchChar(char,string)
+int searchChar(char letter,string text)
 {
+	int number = 0;
 	
+	for(int i = 0; i < text.size(); ++i)
+	{
+		if(letter==text[i])
+		{
+			number++;
+		}
+	}
+	
+	return number;
 }
-bool repeatsChar(string)
+string eraseChar(char letter, string text)
 {
+	for(int i = 0; i < text.size(); ++i)
+	{
+		if(letter==text[i])
+		{
+			text[i] = ' ';
+		}
+	}
 	
+	return text;
+}
+
+bool isNumber(char letter)
+{
+	char vowels[10]={'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	bool answer = false;
+	
+	for (int i = 0;i<10;i++)
+	{
+		if(letter==vowels[i])
+		{
+			answer = true;
+		}
+	}
+	
+	return answer;
 }
 
 int main() 
 {  
   // 1
-
   cout << nChars("Wake Tech CSC 134") << endl ;	// 17
   cout << nChars("1234AA")<< endl ;			//  7
   cout << nChars("AaBb") << endl ;  		//  4
@@ -65,32 +140,7 @@ int main()
   // 6
   cout << eraseChar('e', "Wake TECH Cee")<< endl ;		// "Wak TECH C" 
   cout << eraseChar('a', "aaaa 1234") << endl ; 		// 1234
-  // 7
-  cout << repeatsChar(" Wake TECH" )<< endl ; 			// true or 1 
-  cout << repeatsChar(" Wake 101" ) << endl ; 			// true or 1 
-  cout << repeatsChar("AbCD") << endl ; 				// false or 0 
-  // 8 
-  cout << upperCase("123 CSC programs")<< endl ; 	// 123 CSC PROGRAMS 
-  cout << upperCase("123 CSC ") << endl ; 		// 123 CSC
-  cout << upperCase("abD34 CSC ") << endl ; 		// ABD34 CSC
-
-  // 9 
-  cout << nWords("Outside it is raining today" )<< endl;	// 5
-  cout << nWords("Outside" ) << endl ; 				// 1
-  cout << nWords("Outside       CSC")  << endl ; 		// 2   
-  cout << nWords("Mary's decision's--accepted")  << endl ; 	// 2   
-  // 10
-  cout << equals ("ATE","ate") << endl ; 			// true or 1
-  cout << equals ("1234", "2314") << endl 	;		// false or 0
-  // 11
-  cout << subString("rogr","C++ Programming") << endl ; 	// 5  
-  cout << subString("C++","C++ Programming") << endl ; 	// 0 
-  cout << subString("ror","C++ Programming") << endl ;       // -1 
-  // 12
-  cout << nAlpha("CSC 134") << endl ; 				//  3 
-  cout << nAlpha("123134") << endl ; 				// 0 
-  cout << nAlpha("Wake  Tech") << endl ; 				// 8 
-
+	
   return 0 ;
 }   // end of main 
 
