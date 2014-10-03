@@ -6,10 +6,10 @@
 //
 // Description:
 //    A collection of functions. One returns the number of digits in an
-//    string. Another reverses number order. One checks is a word is a 
-//	  palindrome. The forth checks the number of vowels in a string.
-//	  the last checks the number of times a character is used in a
-//	  string.
+//    string. Another reverses a string. One checks if a word is a 
+//	  palindrome. The forth eliminates a letter from a string. Another
+//	  searches for a character and returns the number of time it is used.
+//	  The last checks the number of number used in a string.
 //                                                                  
 ///////////////////////////////////////////////////////////////////////
 
@@ -28,11 +28,13 @@ int searchChar(char,string);
 string eraseChar(char, string);
 bool isNumber(char);
 
+//returns number ok characters in string
 int nChars(string text)
 {
 	return text.length();
 }
 
+//revereses a string
 string reverse(string text)
 {
 	string reversed= "";
@@ -45,6 +47,7 @@ string reverse(string text)
 	return reversed;
 }
 
+//checks if a string is a palidrome
 bool isPalidrome(string text)
 {
 	if (equal(text.begin(), text.begin() + text.size()/2, text.rbegin()))
@@ -57,6 +60,8 @@ bool isPalidrome(string text)
 	}
 	
 }
+
+//returns number of digits in a string
 int nIntegers(string text)
 {
 	int number = 0;
@@ -71,6 +76,8 @@ int nIntegers(string text)
 	
 	return number;
 } 
+
+//searches string for a character and returns number of times it appears
 int searchChar(char letter,string text)
 {
 	int number = 0;
@@ -85,27 +92,32 @@ int searchChar(char letter,string text)
 	
 	return number;
 }
+
+//erases a character from a string
 string eraseChar(char letter, string text)
 {
-	for(int i = 0; i < text.size(); ++i)
+	string output;
+
+	for(size_t i = 0; i < text.size(); ++i)
 	{
-		if(letter==text[i])
+	  	if(text[i] != letter)
 		{
-			text[i] = ' ';
+			output += text[i];
 		}
 	}
 	
-	return text;
+	return output;
 }
 
+//checks if a character is a number
 bool isNumber(char letter)
 {
-	char vowels[10]={'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	char num[10]={'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 	bool answer = false;
 	
 	for (int i = 0;i<10;i++)
 	{
-		if(letter==vowels[i])
+		if(letter==num[i])
 		{
 			answer = true;
 		}
@@ -118,7 +130,7 @@ int main()
 {  
   // 1
   cout << nChars("Wake Tech CSC 134") << endl ;	// 17
-  cout << nChars("1234AA")<< endl ;			//  7
+  cout << nChars("1234AAA")<< endl ;			//  7
   cout << nChars("AaBb") << endl ;  		//  4
   cout << nChars("Aa   Bb") << endl ;  		//  7  Three blanks 
   // 2
