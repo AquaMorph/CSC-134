@@ -71,14 +71,48 @@ int nWords(string text)
     }
     return count;
 }
-bool equals (string, string)
+
+//returns is two stings are equal to each other
+bool equals (string text1, string text2)
 {
+	if(upperCase(text1)==upperCase(text2))return true;
+	else return false;
 }
-int subString(string,string)
+
+//check position a string appears in another string
+int subString(string sub,string text)
 {
+	int count=0, total=-1;
+	for(int i = 0; i < text.length();i++)
+	{
+		for(int j = 0; j < sub.length();j++)
+		{
+			if(text[i+j]==sub[j])count++;
+		}
+		if(count==sub.length())
+		{
+			total=i;
+			count=0;
+		}
+		else count=0;
+	}
+	return total;
 }
-int nAlpha(string)
+
+//counts number off letters in a string
+int nAlpha(string text)
 {
+	char letters[26]={'A','B','C','D','E','F','G','H','I','J','K','L',
+	'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+	int count = 0;
+	for(int i = 0; i < text.length();i++)
+	{
+		for(int j=0;j<26;j++)
+		{
+			if(toupper(text[i])==letters[j])count++;
+		}
+	}
+	return count;
 }
 
 int main() 
