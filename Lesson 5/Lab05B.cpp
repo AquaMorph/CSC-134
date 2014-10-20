@@ -5,11 +5,12 @@
 // Programmer: Christian Colglazier  
 //
 // Description:
-//    A collection of functions. One returns the number of digits in an
-//    string. Another reverses a string. One checks if a word is a 
-//	  palindrome. The forth eliminates a letter from a string. Another
-//	  searches for a character and returns the number of time it is used.
-//	  The last checks the number of number used in a string.
+//    A collection of functions. One returns if a string has repeating
+//    characters. Another converts a string to uppercase. A thrid checks 
+//	  the number of words in a string. The forth checks if two strings
+//	  are the same in a noncase sensitive manor. The fifth one returns
+//	  the position a string appears in another string. The last one counts
+//	  the number of letters in a string.
 //                                                                  
 ///////////////////////////////////////////////////////////////////////
 
