@@ -1,4 +1,13 @@
- // Triangle.cpp  
+///////////////////////////////////////////////////////////////////////
+//                                                                     
+// Filename: Triangle.cpp
+// Date: October 31, 2014
+// Programmer: Christian Colglazier  
+//
+// Description:
+//    Hangles calculations with triangles
+//                                                                  
+///////////////////////////////////////////////////////////////////////
  #include "Triangle.h"
   
 	// default constructor set all sides = 1 

@@ -1,4 +1,13 @@
-// TriangleMain.cpp
+///////////////////////////////////////////////////////////////////////
+//                                                                     
+// Filename: triangleMain.cpp
+// Date: October 31, 2014
+// Programmer: Christian Colglazier  
+//
+// Description:
+//    Hangles calculations with triangles
+//                                                                  
+///////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include "Triangle.cpp"
 
@@ -6,7 +15,7 @@ void displayTriangleArray (Triangle tax[], int nx) ;
 void fillTriangleArray (Triangle tax[], int nx) ; 
 // return a triangle 
 Triangle maxPerimeter(Triangle tax[], int nx) ; // return the traingle with the largest perimeter
-using namespace std;  ;
+using namespace std;  
 
 // function main begins program execution
 int main()
@@ -109,7 +118,7 @@ int main()
 	cout << endl << endl ; 
 		  
     // AARAY of TRIANGLES 
-    int n = 10; 
+    int n = 50; 
     Triangle ta[n]; 
     // default cnstructors
     cout << "before calling setters..." << endl ; 
@@ -124,7 +133,30 @@ int main()
     displayTriangleArray ( ta, n) ;
     
     //finds smallest triangle
-    cout << "smallest triangle..." << maxPerimeter(ta, n).describe() << endl ; 
+    cout << "smallest triangle..." << maxPerimeter(ta, n).describe() << endl;
+	
+	//finds equal triangles
+	for(int i = 0 ; i < n; i++)
+	{
+		for(int j = 0 ; j < n; j++)
+		{
+			if(i!=j)
+			{
+				if(ta[i]==ta[j])cout << "Triangle t" << i+1 << " equals " << "t" << j+1 << endl;
+			}
+		}
+	} 
+	
+	//display the number of equilateral isosceles and scalene triangles
+	int equ=0,iso=0,sca=0;
+	for(int j = 0 ; j < n; j++)
+	{		
+		if(ta[j].typeTriangle()=="Equilateral")equ++;
+		if(ta[j].typeTriangle()=="Isosceles")iso++;
+		if(ta[j].typeTriangle()=="Scalene")sca++;
+	}
+	cout << "Equilateral: " << equ << " Isosceles " << iso << " Scalene " << sca << endl;
+
 
     // system("pause") ; // may be required to pause on your system 
 	   	return 0 ; 

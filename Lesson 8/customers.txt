@@ -1,0 +1,7 @@
+Blaise Pascal	savings		4000	9
+Charles Babbage	savings		3500	8.5
+David Hilbert	checking	1000	5
+George Boole	savings		2500	8
+Emmy Noether	checking	500	4
+James Maxwell	checking	800	4.5
+Edwin Hubble 	savings		3000	8

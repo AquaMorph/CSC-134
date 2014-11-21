@@ -1,4 +1,13 @@
-// Triangle.h 
+///////////////////////////////////////////////////////////////////////
+//                                                                     
+// Filename: Triangle.h
+// Date: October 31, 2014
+// Programmer: Christian Colglazier  
+//
+// Description:
+//    Hangles calculations with triangles
+//                                                                  
+///////////////////////////////////////////////////////////////////////
 #include <string>
 #include <iostream>
 #include <sstream> 
