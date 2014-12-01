@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////
 //                                                                     
 // Filename: Lab09.cpp
-// Date: October 21, 2014
+// Date: December 1, 2014
 // Programmer: Christian Colglazier  
 //
 // Description:
@@ -9,37 +9,7 @@
 //                                                                  
 ///////////////////////////////////////////////////////////////////////
 
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <list>
-#include <math.h>
-#include <stdlib.h>   
-
-using namespace std;
-
-struct node
-{
-	string lastName;
-	string firstName;
-	double score;
-	char grade;
-	node *next;
-};
-
-
-
-void add(node *&head, node *&last);
-char getGrade(double);
-void addStudent(node *&head, node *&last, string, string, double, char);
-void printAll(node *current);
-void loadUsers(node *&head, node *&last);
-bool isEmpty(node *head);
-void addFirst(node *&head, node *&last, string, string, double, char);
-void remove(node *&head, node *&last);
-void highest(node *current);
+ #include "Lab09.h"
 
 
 //Returns letter grade of score
@@ -122,9 +92,8 @@ void loadUsers(node *&head, node *&last)
 		cout << "Cannot open the input file. Program terminates!" << endl;
 	}
 	
-	while(infile.good())
+	while(getline(infile, line).good())
 	{
-		getline(infile, line);
 		stringstream stream(line);
 		stream >> firstName;
 		stream >> lastName;
@@ -139,10 +108,12 @@ void loadUsers(node *&head, node *&last)
 void printAll(node *current)
 {
 	cout << setw(16) << left << "Student Name" << setw(11) << left << "Test Score" << "Grade" << endl;
+	out << setw(16) << left << "Student Name" << setw(11) << left << "Test Score" << "Grade" << endl;
 	while(current != NULL)
 	{
 		string name = current->lastName + ", " + current->firstName;
 		cout << setw(20) << left << name << setw(9) << left <<current->score << current->grade << endl;
+		out << setw(20) << left << name << setw(9) << left <<current->score << current->grade << endl;
 		current = current->next;
 	}
 }
@@ -150,8 +121,8 @@ void printAll(node *current)
 //Displays all data
 void highest(node *current)
 {
-	double high[5];
-	string names[5];
+	double high[7];
+	string names[7];
 	
 	while(current != NULL)
 	{
@@ -180,24 +151,49 @@ void highest(node *current)
 			high[4]=current->score;
 			names[4]=current->lastName + ", " + current->firstName;
 		}
+		else if(current->score>high[5])
+		{
+			high[5]=current->score;
+			names[5]=current->lastName + ", " + current->firstName;
+		}
+		else if(current->score>high[6])
+		{
+			high[6]=current->score;
+			names[6]=current->lastName + ", " + current->firstName;
+		}
 		current = current->next;
 	}
 	
-	cout << "Highest Test Score: " << high[0] << endl;
+	cout << "\nHighest Test Score: " << high[0] << endl;
 	cout << "Students having the highest test score:" << endl;
-	for(int i=0;i<5;i++)
+	out << "\nHighest Test Score: " << high[0] << endl;
+	out << "Students having the highest test score:" << endl;
+	for(int i=0;i<7;i++)
 	{
-		cout << names[i] << endl;
+		if(i>4)
+		{
+			if(high[i]==high[i-1])
+			{
+				cout << names[i] << endl;
+				out << names[i] << endl;
+			}
+		}
+		else
+		{
+			cout << names[i] << endl;
+			out << names[i] << endl;
+		}
 	}
 }
 
-int main() 
-{  
-	node *head = NULL;
-	node *last = NULL;
-	loadUsers(head, last);
-	printAll(head);
-	cout << endl;
-	highest(head);
-	return 0;
+//Creates text file
+void writeOpen()
+{
+	out.open("colglazierChristian.txt");
+}
+
+//Saves text file
+void writeClose()
+{
+	out.close();
 }
