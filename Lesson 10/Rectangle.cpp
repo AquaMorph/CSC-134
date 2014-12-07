@@ -1,4 +1,13 @@
-// Rectangle.cpp
+///////////////////////////////////////////////////////////////////////
+//                                                                     
+// Filename: Rectangle.cpp
+// Date: December 11, 2014
+// Programmer: Christian Colglazier  
+//
+// Description:
+//    Hangles calculations with rectangles
+//                                                                  
+///////////////////////////////////////////////////////////////////////
 #include "Rectangle.h"
 // constructors =============================
 // default constructor set sides = 1
@@ -36,30 +45,59 @@ double Rectangle::area()
 	return a; 
 }
 
-double Rectangle::perimeter() { double p = 2*(l + w); return p; }
+double Rectangle::perimeter()
+{
+	double p = 2*(l + w);
+	return p;
+}
 // compute perimeter DONE
 
-double Rectangle::diagonal() { double d = 0.0 ; return d; }
+double Rectangle::diagonal() 
+{
+	double d = sqrt(l*l + w*w);
+	return d;
+}
 // return the diagonal of the rectangle
 // INCORRECT
 // use c^2 = l^2 + w^2
 // getters and setters DONE
-double Rectangle::getLength() { return l; }
-double Rectangle::getWidth() { return w; }
+double Rectangle::getLength()
+{
+	return l;
+}
+double Rectangle::getWidth() 
+{
+	return w;
+}
+void Rectangle::setLength(double x) 
+{ 
+	l = x;
+}
+void Rectangle::setWidth(double x) 
+{
+	w = x;
+}
 
-void Rectangle::setLength(double x) { l = x ; }
-void Rectangle::setWidth(double x) { w = x ; }
+double Rectangle::largestSide ()
+{
+	double max = l;
+	if(w>l)max =w;
+	return max;
+}
 
- double Rectangle::largestSide () { double max = 0 ; return max ; }
- // INCORRECT fix
- // function should return the larger of l and w
+double Rectangle::smallestSide () 
+{
+	int min = l;
+	if(w<l)min = w;
+	return min;
+}
 
- double Rectangle::smallestSide () { int min = 0 ; return min ; }
- // INCORRECT fix
- // function should return the smaller of l and w 
-  bool Rectangle::isEmpty() { bool b = false; return b ; }
- // return true if the area of rectangle is 0.0 otherwise return false
- // INCORRECT fix
+bool Rectangle::isEmpty() 
+{
+	bool b = false;
+	if(l*w==0)b = true;
+	return b;
+}
 
 bool Rectangle::isSquare()
 {
@@ -67,23 +105,23 @@ bool Rectangle::isSquare()
   if(w==l)b=true;
   return b;
 }
- // return true if the rectangle is a square ( l == w) otherwise return false
- // INCORRECT fix
 
- string Rectangle:: typeRectangle () {string s = "Not sure" ; return s ; }
- // return "square" if l == w
- // otherwise return “rectangle”
- // make sure isSquare() and isEmpty() is called
- // INCORRECT fix
+string Rectangle:: typeRectangle ()
+{
+	string s = "Not sure";
+	if(isEmpty());
+	else if(isSquare())s= "square";
+	else s= "rectangle";
+	return s;
+}
 
+bool Rectangle::operator==( const Rectangle other)
+{
+	bool b = false;
+	if (l == other.l && w == other.w) b = true;
+	return b;
+}
 
- bool Rectangle::operator==( const Rectangle other) // are two rectangles equal ?
- {
- bool b = false ;
- if (l == other.l && w == other.w ) b = true;
- return b ;
-
- }
 string Rectangle::describe()
 {
 	stringstream ss;

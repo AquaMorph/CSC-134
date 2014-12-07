@@ -1,8 +1,18 @@
-// Rectangle.h
+///////////////////////////////////////////////////////////////////////
+//                                                                     
+// Filename: Rectangle.h
+// Date: December 11, 2014
+// Programmer: Christian Colglazier  
+//
+// Description:
+//    Hangles calculations with rectangles
+//                                                                  
+///////////////////////////////////////////////////////////////////////
 #include <string>
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
+#include <math.h>
 
 using namespace std;
 

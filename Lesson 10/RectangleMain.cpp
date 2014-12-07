@@ -1,10 +1,20 @@
-// RectangleMain.cpp
+///////////////////////////////////////////////////////////////////////
+//                                                                     
+// Filename: RectangleMain.cpp
+// Date: December 11, 2014
+// Programmer: Christian Colglazier  
+//
+// Description:
+//    Hangles calculations with rectangles
+//                                                                  
+///////////////////////////////////////////////////////////////////////
 #include "Rectangle.cpp"
-void displayRectangleArray (Rectangle rax[], int nx) ; // done
-void fillRectangleArray (Rectangle rax[], int nx) ;
-int nSquares(Rectangle rax[], int nx) ;
-int equalRectangles(Rectangle rax[], int nx) ;
+void displayRectangleArray (Rectangle rax[], int nx);
+void fillRectangleArray (Rectangle rax[], int nx);
+int nSquares(Rectangle rax[], int nx);
+int equalRectangles(Rectangle rax[], int nx);
 double randomNum();
+int largest(Rectangle rax[], int nx);
 
 using namespace std; ;
 
@@ -54,8 +64,7 @@ int main()
 	// call the describe function for the rectangle in the array with largest area
 	// assuming the rectangle with the largest area is ra[50] NOT CORRECT
 	// your output should be
-	cout << endl << "the rectangle with largest area is " << ra[50].describe() ;
-	// TO CHECK your WORK let n = 125 above
+	cout << endl << "the rectangle with largest area is " << ra[largest(ra, n)].describe() ;
 	// system("pause") ; // may be required to pause on your system
 	return 0 ;
 }
@@ -105,4 +114,15 @@ int equalRectangles(Rectangle rax[], int nx)
 double randomNum()
 {
 	return ((rand() % 100 + 100)/10);
+}
+
+// returns larget rectangle
+int largest(Rectangle rax[], int nx)
+{
+	int n = 0;
+	for(int i=1;i<nx;i++)
+	{
+		if(rax[i].area()>rax[n].area())n=i;
+	}
+	return n;
 }
